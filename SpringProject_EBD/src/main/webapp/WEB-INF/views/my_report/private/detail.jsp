@@ -8,6 +8,8 @@
 <title>/my_report/private/detail.jsp</title>
 </head>
 <body>
-	<h1>상세페이지</h1>
+<div class="container">
+	<img src="${pageContext.request.contextPath }${tmp.imgpath }" />
+</div>
 </body>
 </html>

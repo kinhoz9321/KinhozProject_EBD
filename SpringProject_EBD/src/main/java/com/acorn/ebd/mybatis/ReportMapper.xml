@@ -6,4 +6,14 @@
 		(num, writer, genre, stars, imgpath, content, viewcnt, regdate)
 		VALUES(ebd_report_seq.NEXTVAL, #{writer}, #{genre}, #{stars}, #{imgpath}, #{content}, 0, SYSDATE)
 	</insert>
+	<select id="getList" parameterType="reportDto" resultType="reportDto">
+		SELECT imgpath
+		FROM ebd_report
+		ORDER BY num DESC
+	</select>
+	<select id="getData" parameterType="int" resultType="reportDto">
+		SELECT num, writer, genre, stars, imgpath, content, viewcnt, regdate
+		FROM ebd_report
+		WHERE num=#{num}
+	</select>
 </mapper>
