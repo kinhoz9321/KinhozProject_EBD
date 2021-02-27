@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,7 +29,7 @@ public class ReportController {
 	
 	//독후감 새글 작성 폼 요청 처리
 	@RequestMapping("/my_report/private/insertform")
-	public String insertform() {
+	public String insertform(){
 		
 		return "my_report/private/insertform";
 	}

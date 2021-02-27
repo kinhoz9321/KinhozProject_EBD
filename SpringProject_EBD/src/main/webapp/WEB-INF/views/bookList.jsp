@@ -112,16 +112,20 @@
         });
 		
         console.log("배열에 담긴 값 : "+tdArr);
-        
+        /*
         str += image+
         	title+
         	author+
         	publisher+
         	link+
         	description;
+        */
+        title = title
+        author = author
+        link = link
         
         //$("#result").html(tr.text());
-        $("#result2").html(str);
+        $("#result2").html("제목 : "+title+"저자 : "+author+"구매처 링크 : "+link);
 	});
 </script>
 </body>
