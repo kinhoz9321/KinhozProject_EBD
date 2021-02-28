@@ -13,24 +13,12 @@ public class ReportDto {
 	private String stars;
 	private String imgpath;
 	private MultipartFile image;
+	private String title;
 	
 	public ReportDto() {}
 
 	public ReportDto(int num, String writer, String content, int viewcnt, String regdate, String genre, String stars,
-			String imgpath) {
-		super();
-		this.num = num;
-		this.writer = writer;
-		this.content = content;
-		this.viewcnt = viewcnt;
-		this.regdate = regdate;
-		this.genre = genre;
-		this.stars = stars;
-		this.imgpath = imgpath;
-	}
-
-	public ReportDto(int num, String writer, String content, int viewcnt, String regdate, String genre, String stars,
-			String imgpath, MultipartFile image) {
+			String imgpath, MultipartFile image, String title) {
 		super();
 		this.num = num;
 		this.writer = writer;
@@ -41,14 +29,7 @@ public class ReportDto {
 		this.stars = stars;
 		this.imgpath = imgpath;
 		this.image = image;
-	}
-
-	public MultipartFile getImage() {
-		return image;
-	}
-
-	public void setImage(MultipartFile image) {
-		this.image = image;
+		this.title = title;
 	}
 
 	public int getNum() {
@@ -115,6 +96,20 @@ public class ReportDto {
 		this.imgpath = imgpath;
 	}
 
-	
+	public MultipartFile getImage() {
+		return image;
+	}
+
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
 }

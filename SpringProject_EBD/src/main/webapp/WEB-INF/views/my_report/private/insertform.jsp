@@ -19,7 +19,7 @@
 		<!-- 링크까지 구현 x -->
 		<div>
 			<label for="title">책제목</label>
-			<input type="text" name="title" id="title"/>
+			<input type="text" name="title" id="title" value="${dto.title }"/>
 		</div>
 		<div>
 			<label for="author">작가</label>
