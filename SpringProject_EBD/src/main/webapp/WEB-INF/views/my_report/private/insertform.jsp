@@ -16,9 +16,10 @@
 			<label for="search">책검색</label>
 			<button><a href="${pageContext.request.contextPath }/bookList.do">검색</a></button>
 		</div>
+		<!-- 링크까지 구현 x -->
 		<div>
 			<label for="title">책제목</label>
-			<input type="text" name="title" id="title" value="${bookList.title }"/>
+			<input type="text" name="title" id="title"/>
 		</div>
 		<div>
 			<label for="author">작가</label>
@@ -47,11 +48,11 @@
 			<label for="stars">별점</label>
 			<select name="stars" id="stars">
 				<option value="">선택</option>
-				<option value="1">★</option>
-				<option value="2">★★</option>
-				<option value="3">★★★</option>
-				<option value="4">★★★★</option>
-				<option value="5">★★★★★</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
 			</select>
 		</div>
 		<div>

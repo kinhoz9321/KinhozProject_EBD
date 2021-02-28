@@ -125,7 +125,9 @@
         link = link
         
         //$("#result").html(tr.text());
-        $("#result2").html("力格 : "+title+"历磊 : "+author+"备概贸 傅农 : "+link);
+        $("#result2").html("力格 : "+title+" 历磊 : "+author+" 备概贸 傅农 : "+link);
+        //捞 蔼阑 insertform.jsp 肺 逞扁绰 规过
+        
 	});
 </script>
 </body>
