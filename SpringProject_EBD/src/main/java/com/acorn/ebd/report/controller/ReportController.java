@@ -29,8 +29,15 @@ public class ReportController {
 	}
 	
 	//독후감 새글 작성 폼 요청 처리
+	@RequestMapping("/my_report/private/insertform2")
+	public String insertform2(@ModelAttribute("dto") ReportDto dto){
+		
+		return "my_report/private/insertform";
+	}
+	
+	//독후감 새글 작성 폼 요청 처
 	@RequestMapping("/my_report/private/insertform")
-	public String insertform(@ModelAttribute("dto") ReportDto dto){
+	public String insertform(){
 		
 		return "my_report/private/insertform";
 	}

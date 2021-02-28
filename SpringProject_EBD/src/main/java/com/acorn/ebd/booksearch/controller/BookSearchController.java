@@ -15,7 +15,7 @@ public class BookSearchController {
     
     //Ű���尡 �������� �ְ� ������������ 
     //�������� �������� �������� �Ȱ������� 
-    @RequestMapping("/bookList.do")
+    @RequestMapping("/my_report/private/bookList.do")
     public ModelAndView bookList(@RequestParam(required=false)String keyword){
         ModelAndView mav = new ModelAndView();
         
@@ -23,7 +23,7 @@ public class BookSearchController {
         {
             mav.addObject("bookList",service.searchBook(keyword,10,1));
         }
-        mav.setViewName("bookList");
+        mav.setViewName("my_report/private/bookList");
         return mav;
     }	
 }

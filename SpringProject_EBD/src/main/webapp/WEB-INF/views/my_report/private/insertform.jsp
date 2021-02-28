@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8";
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -14,12 +14,19 @@
 		<!-- 구매처 링크 기능까지는 아직 완성 안됨. -->
 		<div>
 			<label for="search">책검색</label>
-			<button><a href="${pageContext.request.contextPath }/bookList.do">검색</a></button>
+			<button><a href="${pageContext.request.contextPath }/my_report/private/bookList.do">검색</a></button>
 		</div>
 		<!-- 링크까지 구현 x -->
 		<div>
 			<label for="title">책제목</label>
-			<input type="text" name="title" id="title" value="${dto.title }"/>
+			<c:choose>
+				<c:when test="${empty dto.title }">
+					<input type="text" name="title" id="title"/><br />
+				</c:when>
+				<c:otherwise>
+					<input type="text" name="title" id="title" value="${dto.title }" disabled/><br />
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<div>
 			<label for="author">작가</label>

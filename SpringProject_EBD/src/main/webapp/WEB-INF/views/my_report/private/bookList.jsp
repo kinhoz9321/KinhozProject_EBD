@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <!-- jQuery  -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>/views/bookList.jsp</title>
@@ -13,19 +13,19 @@
     <center>
         <form action="bookList.do">
             <input type="text" name="keyword" >
-            <input type="submit" value="ê²€ìƒ‰">
+            <input type="submit" value="°Ë»ö">
         </form>        
     </center>
     <table id="search-api" style="border:1px red solid">
     	<thead>
 	       	<tr>
-	       		<th>ì±…í‘œì§€</th>
-	       		<th>ì±…ì œëª©</th>
-	       		<th>ì €ì</th>
-	       		<th>ì¶œíŒì‚¬</th>
-	       		<th>êµ¬ë§¤ì²˜ ë§í¬</th>
-	       		<th>ì±…ì†Œê°œ</th>
-	       		<th>ì„ íƒ</th>
+	       		<th>Ã¥Ç¥Áö</th>
+	       		<th>Ã¥Á¦¸ñ</th>
+	       		<th>ÀúÀÚ</th>
+	       		<th>ÃâÆÇ»ç</th>
+	       		<th>±¸¸ÅÃ³ ¸µÅ©</th>
+	       		<th>Ã¥¼Ò°³</th>
+	       		<th>¼±ÅÃ</th>
 	       	</tr>
     	</thead>
     	<tbody>
@@ -38,15 +38,15 @@
                 <td width="200">${b.link }</td>
                 <td width="300">${b.description}</td>
                 <td>
-                	<form action="${pageContext.request.contextPath }/private/insertform.do" method="post">
+                	<form action="insertform2.do">
                 		<label for="title"></label>
                 		<input type="hidden" id="title" name="title" value="${b.title }"/>
                 		<label for=""></label>
-                		<input type="submit" value="ì„ íƒ"/>
+                		<input type="submit" value="¼±ÅÃ"/>
                 	</form>
                 </td>
                 <!-- 
-                <td width="100"><input type="button" class="checkBtn" value="ì„ íƒ"/></td>
+                <td width="100"><input type="button" class="checkBtn" value="¼±ÅÃ"/></td>
                  -->
                 
             </tr>
@@ -60,55 +60,55 @@
 </div>
 <script>
 	/*
-	//í…Œì´ë¸”ì˜ Row í´ë¦­ì‹œ ê°’ ê°€ì ¸ì˜¤ê¸°
+	//Å×ÀÌºíÀÇ Row Å¬¸¯½Ã °ª °¡Á®¿À±â
 	$("#search-api").click(function(){
 		
 		var str = ""
-		var tdArr = new Array(); //ë°°ì—´ ì„ ì–¸
+		var tdArr = new Array(); //¹è¿­ ¼±¾ğ
 		
-		//í˜„ì¬ í´ë¦­ëœ Row(<tr>)
+		//ÇöÀç Å¬¸¯µÈ Row(<tr>)
 		var tr = $(this);
 		var td = tr.children();
 		
-		//tr.text() ëŠ” í´ë¦­ëœ Row ì¦‰ tr ì— ìˆëŠ” ëª¨ë“  ê°’ì„ ê°€ì ¸ì˜¨ë‹¤.
-		console.log("í´ë¦­í•œ Rowì˜ ëª¨ë“  ë°ì´í„° : "+tr.text());
+		//tr.text() ´Â Å¬¸¯µÈ Row Áï tr ¿¡ ÀÖ´Â ¸ğµç °ªÀ» °¡Á®¿Â´Ù.
+		console.log("Å¬¸¯ÇÑ RowÀÇ ¸ğµç µ¥ÀÌÅÍ : "+tr.text());
 		
-		//ë°˜ë³µë¬¸ì„ ì´ìš©í•´ì„œ ë°°ì—´ì— ê°’ì„ ë‹´ì•„ ì‚¬ìš©í•  ìˆ˜ë„ ìˆë‹¤.
+		//¹İº¹¹®À» ÀÌ¿ëÇØ¼­ ¹è¿­¿¡ °ªÀ» ´ã¾Æ »ç¿ëÇÒ ¼öµµ ÀÖ´Ù.
 		td.each(function(i){
 			tdArr.push(td.eq(i).text());
 		});
 		
-		console.log("ë°°ì—´ì— ë‹´ê¸´ ê°’ : "+tdArr);
+		console.log("¹è¿­¿¡ ´ã±ä °ª : "+tdArr);
 		
-		//td.eq(index)ë¥¼ í†µí•´ ê°’ì„ ê°€ì ¸ì˜¬ ìˆ˜ë„ ìˆë‹¤.
+		//td.eq(index)¸¦ ÅëÇØ °ªÀ» °¡Á®¿Ã ¼öµµ ÀÖ´Ù.
 		var image = td.eq(0).text();
 		var title = td.eq(1).text();
 		var author = td.eq(2).text();
 		var link = td.eq(4).text();
 		
-		str += "* í´ë¦­ëœ rowì˜ tdê°’ = image. : " + image +
-			", ì œëª© : " + title +
-			", ì €ì : " + author +
-			", ë§í¬ : " + link ;
+		str += "* Å¬¸¯µÈ rowÀÇ td°ª = image. : " + image +
+			", Á¦¸ñ : " + title +
+			", ÀúÀÚ : " + author +
+			", ¸µÅ© : " + link ;
 		
-		$("#result").html("í´ë¦­í•œ ëª¨ë“  rowì˜ ëª¨ë“  ë°ì´í„° = "+tr.text());
+		$("#result").html("Å¬¸¯ÇÑ ¸ğµç rowÀÇ ¸ğµç µ¥ÀÌÅÍ = "+tr.text());
 		$("#result2").html(str);
 	});
 	*/
 	
-	//ë²„íŠ¼ í´ë¦­ì‹œ row í•œê°œì˜ ê°’ ê°€ì ¸ì˜¤ê¸°
+	//¹öÆ° Å¬¸¯½Ã row ÇÑ°³ÀÇ °ª °¡Á®¿À±â
 	$(".checkBtn").click(function(){
 		
 		var str = ""
-		var tdArr = new Array(); //ë°°ì—´ ì„ ì–¸
+		var tdArr = new Array(); //¹è¿­ ¼±¾ğ
 		var checkBtn = $(this);
 		
-		// checkBtn.parent() : checkBtnì˜ ë¶€ëª¨ëŠ” <td>ì´ë‹¤.
-        // checkBtn.parent().parent() : <td>ì˜ ë¶€ëª¨ì´ë¯€ë¡œ <tr>ì´ë‹¤.
+		// checkBtn.parent() : checkBtnÀÇ ºÎ¸ğ´Â <td>ÀÌ´Ù.
+        // checkBtn.parent().parent() : <td>ÀÇ ºÎ¸ğÀÌ¹Ç·Î <tr>ÀÌ´Ù.
         var tr = checkBtn.parent().parent();
         var td = tr.children();
 
-		console.log("í´ë¦­í•œ rowì˜ ëª¨ë“  ë°ì´í„° : "+tr.text());
+		console.log("Å¬¸¯ÇÑ rowÀÇ ¸ğµç µ¥ÀÌÅÍ : "+tr.text());
 		
         var image = td.eq(0).text();
         var title = td.eq(1).text();
@@ -117,12 +117,12 @@
         var link = td.eq(4).text();
         var description = td.eq(5).text();
         
-        //ë°˜ë³µë¬¸ì„ ì´ìš©í•´ì„œ ë°°ì—´ì— ê°’ì„ ë‹´ì•„ ì‚¬ìš©í•  ìˆ˜ ìˆë‹¤.
+        //¹İº¹¹®À» ÀÌ¿ëÇØ¼­ ¹è¿­¿¡ °ªÀ» ´ã¾Æ »ç¿ëÇÒ ¼ö ÀÖ´Ù.
         td.each(function(i){
         	tdArr.push(td.eq(i).text());
         });
 		
-        console.log("ë°°ì—´ì— ë‹´ê¸´ ê°’ : "+tdArr);
+        console.log("¹è¿­¿¡ ´ã±ä °ª : "+tdArr);
         /*
         str += image+
         	title+
@@ -136,15 +136,15 @@
         link = link
         
         //$("#result").html(tr.text());
-        $("#result2").html("ì œëª© : "+title+" ì €ì : "+author+" êµ¬ë§¤ì²˜ ë§í¬ : "+link);
-        //ì´ ê°’ì„ insertform.jsp ë¡œ ë„˜ê¸°ëŠ” ë°©ë²•
+        $("#result2").html("Á¦¸ñ : "+title+" ÀúÀÚ : "+author+" ±¸¸ÅÃ³ ¸µÅ© : "+link);
+        //ÀÌ °ªÀ» insertform.jsp ·Î ³Ñ±â´Â ¹æ¹ı
         
 	});
 </script>
 </body>
 </html>
 <!-- 
-	api ë¦¬ìŠ¤íŠ¸ì—ì„œ ì„ íƒ ë²„íŠ¼ì„ ëˆ„ë¥´ë©´
-	ê·¸ í–‰ì˜ ì •ë³´ê°€ ë‹´ê²¨ì„œ ì¶œë ¥ë˜ëŠ” ê²ƒê¹Œì§€ ë§Œë“¦.
-	insertform ìœ¼ë¡œ ë°ì´í„° ë„˜ê¸°ëŠ” ê²ƒê¹Œì§€ëŠ” ëª»ë§Œë“¦. 
+	api ¸®½ºÆ®¿¡¼­ ¼±ÅÃ ¹öÆ°À» ´©¸£¸é
+	±× ÇàÀÇ Á¤º¸°¡ ´ã°Ü¼­ Ãâ·ÂµÇ´Â °Í±îÁö ¸¸µê.
+	insertform À¸·Î µ¥ÀÌÅÍ ³Ñ±â´Â °Í±îÁö´Â ¸ø¸¸µê. 
  -->
